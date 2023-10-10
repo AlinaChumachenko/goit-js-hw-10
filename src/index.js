@@ -26,12 +26,13 @@ fetchBreeds()
     breedSelect.classList.remove('hidden');
   })
   .catch(error => {
-    Notiflix.Notify.failure(
+     Notiflix.Notify.failure(
       'Oops! Something went wrong! Try reloading the page!'
     );
   })
   .finally(() => {
     loaderMessage.classList.add('hidden');
+    
   });
 
 function onChangeSelect() {
@@ -39,6 +40,7 @@ function onChangeSelect() {
   loaderMessage.classList.remove('hidden');
   breedSelect.disabled = true;
   catCard.classList.add('hidden');
+  catCard.innerHTML = '';
   fetchCatByBreed(selectedCat)
     .then(catInfo => {
       renderPage(catInfo);
